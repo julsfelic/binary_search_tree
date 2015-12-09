@@ -51,4 +51,16 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 'z', data
   end
+
+  def test_correctly_assigns_node_A_to_left_link_of_node_J
+    @tree.insert('m')
+    @tree.insert('z')
+    @tree.insert('j')
+    @tree.insert('a')
+
+    node_J = @tree.root.left_link
+    node_A = node_J.left_link
+
+    assert_equal 'a', node_A.data
+  end
 end
