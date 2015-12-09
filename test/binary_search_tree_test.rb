@@ -110,4 +110,14 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 1, depth
   end
+
+  meta t: true
+  def test_dpeth_is_two_when_four_nodes_are_set
+    @tree.insert('m')
+    @tree.insert('e')
+    @tree.insert('w')
+    depth = @tree.insert('a')
+
+    assert_equal 2, depth
+  end
 end

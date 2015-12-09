@@ -16,9 +16,10 @@ class BinarySearchTree
       @root = node
       depth
     else
-      compare_node_data(node)
+      depth = compare_node_data(node)
     end
     # root_is_nil? ? @root = node : compare_node_data(node)
+    depth
   end
 
   def create_new_node(data)
@@ -33,35 +34,38 @@ class BinarySearchTree
     node.right_link = new_node
   end
 
-  def compare_node_data(node, current_node=root, depth=0)
-    depth += 1
+  def compare_node_data(current_node=root, depth=0, node)
     if node.data < current_node.data
       # maybe add left link nil to the node itself?
-      go_to_left_link(node, current_node)
+      depth += 1
+      current_depth = go_to_left_link(current_node, depth, node)
     else
-      go_to_right_link(node, current_node)
+      depth += 1
+      current_depth = go_to_right_link(current_node, depth, node)
     end
-    depth
+    current_depth
   end
 
-  def go_to_left_link(node, current_node)
+  def go_to_left_link(current_node, depth, node)
     if left_link_nil?(current_node)
       # refactor
       assign_left_link(current_node, node)
     else
       current_node = current_node.left_link
-      compare_node_data(node, current_node)
+      depth = compare_node_data(current_node, depth, node)
     end
+    depth
   end
 
-  def go_to_right_link(node, current_node)
+  def go_to_right_link(current_node, depth, node)
     if right_link_nil?(current_node)
       # refactor
       assign_right_link(current_node, node)
     else
       current_node = current_node.right_link
-      compare_node_data(node, current_node)
+      depth = compare_node_data(current_node, depth, node)
     end
+    depth
   end
 
   def root_is_nil?
