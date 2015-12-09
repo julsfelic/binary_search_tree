@@ -42,11 +42,11 @@ out?
 
 6. Sketch an algorithm in pseudocode.
   1. Create an empty BinarySearchTree
-  2. Make sure the object is an instance of BinarySearchTree
+  2. Check if BinarySearchTree has a "head" equal to nil
   3. Create an empty Node
-  4. Make sure the object is an instance of Node
-  5.
-  6.
+  4. Check if a Node has data that is nil when created
+  5. Check if a Node has a link to the left that is nil when      created
+  6. Check if a Node has a link to the right that is nil when created
   7.
   7.
   7.
