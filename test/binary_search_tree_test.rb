@@ -3,9 +3,15 @@ require 'binary_search_tree'
 require 'pry'
 
 class BinarySearchTreeTest < Minitest::Test
-  def test_can_create_instances
-    tree = BinarySearchTree.new
+  def setup
+    @tree = BinarySearchTree.new
+  end
 
-    assert_instance_of BinarySearchTree, tree
+  def test_can_create_instances
+    assert_instance_of BinarySearchTree, @tree
+  end
+
+  def test_has_a_root_equal_to_nil_on_creation
+    assert_nil @tree.root
   end
 end
