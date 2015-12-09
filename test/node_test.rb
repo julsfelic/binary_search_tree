@@ -44,4 +44,10 @@ class NodeTest < Minitest::Test
     assert_equal @node2, @node1.left_link
     assert_equal @node3, @node1.right_link
   end
+
+  def test_can_have_its_data_assigned
+    @node1.data = "j"
+
+    assert_equal "j", @node1.data
+  end
 end

@@ -43,10 +43,10 @@ out?
 6. Sketch an algorithm in pseudocode.
   1. Create an empty BinarySearchTree
   2. Create an empty Node
-  3. Assign a Node to another nodes left link
-  4. Assign a Node to another nodes right link
-  3. Place empty Node on the root of the BST
-  4. 
+  3. We can "insert" 2 nodes into BST, accounting for the parameters of what a BST is.
+  4.
+  3.
+  4.
   5. GIT
   6.
   7.
