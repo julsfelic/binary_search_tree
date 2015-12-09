@@ -73,6 +73,16 @@ class BinarySearchTree
     end
   end
 
+  def max
+    current_node = root
+    until right_link_nil?(current_node)
+      current_node = current_node.right_link
+      if right_link_nil?(current_node)
+        return current_node.data
+      end
+    end
+  end
+
   def include?(data)
     return false if root_is_nil?
     check_tree_for_data(data)

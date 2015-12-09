@@ -149,4 +149,13 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal true, @tree.include?('q')
     assert_equal false, @tree.include?('b')
   end
+
+  def test_returns_the_largest_data_in_the_tree
+    @tree.insert('m')
+    @tree.insert('c')
+    @tree.insert('q')
+    @tree.insert('a')
+
+    assert_equal 'q', @tree.max
+  end
 end
