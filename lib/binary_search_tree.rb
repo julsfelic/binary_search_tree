@@ -40,7 +40,12 @@ class BinarySearchTree
         compare_node_data(current_node, node)
       end
     else
-      assign_right_link(root, node)
+      if right_link_nil?(current_node)
+        assign_right_link(current_node, node)
+      else
+        current_node = current_node.right_link
+        compare_node_data(current_node, node)
+      end
     end
   end
 
@@ -50,5 +55,9 @@ class BinarySearchTree
 
   def left_link_nil?(node)
     node.left_link.nil?
+  end
+
+  def right_link_nil?(node)
+    node.right_link.nil?
   end
 end

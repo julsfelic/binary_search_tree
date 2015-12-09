@@ -46,15 +46,15 @@ class BinarySearchTreeTest < Minitest::Test
 
   def test_assigns_new_node_to_roots_right_link_if_new_data_is_greater_than_roots_data
     @tree.insert('m')
-    @tree.insert('z')
+    @tree.insert('w')
     data = @tree.root.right_link.data
 
-    assert_equal 'z', data
+    assert_equal 'w', data
   end
 
   def test_correctly_assigns_node_A_to_left_link_of_node_J
     @tree.insert('m')
-    @tree.insert('z')
+    @tree.insert('w')
     @tree.insert('j')
     @tree.insert('a')
 
@@ -62,5 +62,39 @@ class BinarySearchTreeTest < Minitest::Test
     node_A = node_J.left_link
 
     assert_equal 'a', node_A.data
+  end
+
+  def test_correctly_assigns_node_L_to_right_link_of_node_J
+    @tree.insert('m')
+    @tree.insert('w')
+    @tree.insert('j')
+    @tree.insert('l')
+
+    node_J = @tree.root.left_link
+    node_L = node_J.right_link
+
+    assert_equal 'l', node_L.data
+  end
+
+  def test_correctly_assigns_node_P_to_left_link_of_node_W
+    @tree.insert('m')
+    @tree.insert('w')
+    @tree.insert('p')
+
+    node_W = @tree.root.right_link
+    node_P = node_W.left_link
+
+    assert_equal 'p', node_P.data
+  end
+
+  def test_correctly_assigns_node_Z_to_right_link_of_node_W
+    @tree.insert('m')
+    @tree.insert('w')
+    @tree.insert('z')
+
+    node_W = @tree.root.right_link
+    node_Z = node_W.right_link
+
+    assert_equal 'z', node_Z.data
   end
 end
