@@ -97,4 +97,17 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 'z', node_Z.data
   end
+
+  def test_depth_is_zero_when_only_node_is_the_root
+    depth = @tree.insert('m')
+
+    assert_equal 0, depth
+  end
+
+  def test_depth_is_one_when_two_nodes_are_set
+    @tree.insert('m')
+    depth = @tree.insert('j')
+
+    assert_equal 1, depth
+  end
 end
