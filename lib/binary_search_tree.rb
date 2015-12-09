@@ -32,20 +32,27 @@ class BinarySearchTree
   def compare_node_data(current_node=root, node)
     if node.data < current_node.data
       # maybe add left link nil to the node itself?
-      # refactor this shit!
-      if left_link_nil?(current_node)
-        assign_left_link(current_node, node)
-      else
-        current_node = current_node.left_link
-        compare_node_data(current_node, node)
-      end
+      go_to_left_link(current_node, node)
     else
-      if right_link_nil?(current_node)
-        assign_right_link(current_node, node)
-      else
-        current_node = current_node.right_link
-        compare_node_data(current_node, node)
-      end
+      go_to_right_link(current_node, node)
+    end
+  end
+
+  def go_to_left_link(current_node, node)
+    if left_link_nil?(current_node)
+      assign_left_link(current_node, node)
+    else
+      current_node = current_node.left_link
+      compare_node_data(current_node, node)
+    end
+  end
+
+  def go_to_right_link(current_node, node)
+    if right_link_nil?(current_node)
+      assign_right_link(current_node, node)
+    else
+      current_node = current_node.right_link
+      compare_node_data(current_node, node)
     end
   end
 
