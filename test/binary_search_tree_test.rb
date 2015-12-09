@@ -111,13 +111,22 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 1, depth
   end
 
-  meta t: true
-  def test_dpeth_is_two_when_four_nodes_are_set
+  def test_depth_is_two_when_four_nodes_are_set
     @tree.insert('m')
     @tree.insert('e')
     @tree.insert('w')
     depth = @tree.insert('a')
 
     assert_equal 2, depth
+  end
+
+  def test_depth_is_three_when_given_the_right_set_of_nodes
+    @tree.insert('m')
+    @tree.insert('j')
+    @tree.insert('a')
+    @tree.insert('l')
+    depth = @tree.insert('k')
+
+    assert_equal 3, depth
   end
 end
