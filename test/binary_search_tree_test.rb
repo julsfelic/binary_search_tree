@@ -129,4 +129,24 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 3, depth
   end
+
+  def test_returns_false_for_include_if_root_is_nil
+    assert_equal false, @tree.include?('a')
+  end
+
+  def test_returns_true_for_include_if_root_data_equal_data_passed_in
+    @tree.insert('a')
+
+    assert_equal true, @tree.include?('a')
+  end
+
+  def test_checks_if_a_piece_data_is_included_in_tree
+    @tree.insert('m')
+    @tree.insert('c')
+    @tree.insert('q')
+    @tree.insert('a')
+
+    assert_equal true, @tree.include?('q')
+    assert_equal false, @tree.include?('b')
+  end
 end

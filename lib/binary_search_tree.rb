@@ -62,6 +62,22 @@ class BinarySearchTree
     depth
   end
 
+  def check_tree_for_data(data, current_node=root)
+    return true if data == current_node.data
+    if data < current_node.data && left_link_not_nil?(current_node)
+      check_tree_for_data(data, current_node.left_link)
+    elsif data > current_node.data && right_link_not_nil?(current_node)
+      check_tree_for_data(data, current_node.right_link)
+    else
+      false
+    end
+  end
+
+  def include?(data)
+    return false if root_is_nil?
+    check_tree_for_data(data)
+  end
+
   def root_is_nil?
     root.nil?
   end
@@ -70,7 +86,24 @@ class BinarySearchTree
     node.left_link.nil?
   end
 
+  def left_link_not_nil?(node)
+    !node.left_link.nil?
+  end
+
   def right_link_nil?(node)
     node.right_link.nil?
+  end
+
+  def right_link_not_nil?(node)
+    !node.right_link.nil?
+  end
+
+  def both_links_not_nil?(node)
+    links = nil
+    if node.left_link.nil? && node.right_link.nil?
+      false
+    else
+      true
+    end
   end
 end
