@@ -1,8 +1,8 @@
 require 'pry'
 
 class BinarySearchTree
-  attr_reader :root
-
+  attr_accessor :root
+  
   def initialize
     @root = nil
   end
