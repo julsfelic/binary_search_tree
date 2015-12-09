@@ -24,6 +24,8 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_root_is_not_nil_when_assigned_a_node
-    skip
+    @tree.root = @node
+
+    refute_nil @tree.root
   end
 end

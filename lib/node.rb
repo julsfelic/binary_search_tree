@@ -1,7 +1,8 @@
 require 'pry'
 
 class Node
-  attr_reader :data, :left_link, :right_link
+  attr_accessor :left_link, :right_link
+  attr_reader :data
 
   def initialize
     @data = nil
