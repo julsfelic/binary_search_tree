@@ -92,25 +92,63 @@ class BinarySearchTree
     end
   end
 
-  def sort
-    sorted_nodes = []
-    if both_links_nil?(root)
-      sorted_nodes << root.data
+  def find_min_node
+    current_node = root
+    until left_link_nil?(current_node)
+      current_node = current_node.left_link
+      if left_link_nil?(current_node)
+        return current_node
+      end
     end
-    # find_left_most_node(root)
-    # we want to go down the left link first from the root and go through
-    # those nodes in order.
-    # Once the root's left link is nil, we add the root to our array
-    # From there we go down the right link, making sure from there we go through
-    # the left links unitl the node after the root on the right no longer has
-    # nodes on its left link. From there sort through the right link and return
-    # the sorted array
+  end
+
+# start at tope node
+# go left
+# if bottom, collect, else, keep going left
+# go back to parent
+# if top, collect into result, else keep going up (down and right)
+# go right and repeat going to bottom
+
+  def sort
+    current_node = root
+    sorted_nodes = []
+
+    if both_links_nil?(current_node)
+      sorted_nodes << current_node.data
+    elsif left_link_not_nil?(current_node)
+      # find the min node
+      min_node = find_min_node
+      sorted_nodes << deconstruct_left_tree(current_node, min_node)
+      sorted_nodes << current_node.data
+    elsif false
+      #
+    end
+    sorted_nodes.flatten
+  end
+
+  def deconstruct_left_tree(current_node, min_node)
+    sorted_nodes = []
+    sorted_nodes << min_node.data
+    set_left_link_to_nil(current_node)
+    if right_link_not_nil?(current_node)
+      sorted_nodes << current_node.right_link.data
+      set_right_link_to_nil(current_node)
+    end
     sorted_nodes
   end
 
-  # def find_left_most_node(node)
-  #   left_link_nil?(node.left_link)
-  # end
+  def set_nodes_links_to_nil(current_node)
+    current_node.left_link = nil
+    current_node.right_link = nil
+  end
+
+  def set_left_link_to_nil(current_node)
+    current_node.left_link == nil
+  end
+
+  def set_right_link_to_nil(current_node)
+    current_node.right_link == nil
+  end
 
   def include?(data)
     return false if root_is_nil?
