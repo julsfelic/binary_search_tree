@@ -92,6 +92,26 @@ class BinarySearchTree
     end
   end
 
+  def sort
+    sorted_nodes = []
+    if both_links_nil?(root)
+      sorted_nodes << root.data
+    end
+    # find_left_most_node(root)
+    # we want to go down the left link first from the root and go through
+    # those nodes in order.
+    # Once the root's left link is nil, we add the root to our array
+    # From there we go down the right link, making sure from there we go through
+    # the left links unitl the node after the root on the right no longer has
+    # nodes on its left link. From there sort through the right link and return
+    # the sorted array
+    sorted_nodes
+  end
+
+  # def find_left_most_node(node)
+  #   left_link_nil?(node.left_link)
+  # end
+
   def include?(data)
     return false if root_is_nil?
     check_tree_for_data(data)
@@ -123,6 +143,15 @@ class BinarySearchTree
       false
     else
       true
+    end
+  end
+
+  def both_links_nil?(node)
+    links = nil
+    if node.left_link.nil? && node.right_link.nil?
+      true
+    else
+      false
     end
   end
 end

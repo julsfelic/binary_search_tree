@@ -167,4 +167,20 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 'a', @tree.min
   end
+
+  def test_returns_an_array_with_one_element_if_root_is_only_node
+    @tree.insert('m')
+
+    assert_equal ['m'], @tree.sort    
+  end
+
+  def test_returns_an_array_of_all_elements_in_sorted_order
+    skip
+    @tree.insert('m')
+    @tree.insert('c')
+    @tree.insert('q')
+    @tree.insert('a')
+
+    assert_equal ['a', 'c', 'm', 'q'], @tree.sort
+  end
 end
