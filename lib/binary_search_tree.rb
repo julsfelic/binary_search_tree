@@ -25,8 +25,11 @@ class BinarySearchTree
   end
 
   def depth_of(data)
-    return 0 if root_is_nil?
-    check_tree_for_depth(data)
+    if include?(data)
+      check_tree_for_depth(data)
+    else
+      nil
+    end
   end
 
   def max
