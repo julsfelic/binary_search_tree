@@ -102,33 +102,37 @@ class BinarySearchTree
     end
   end
 
-# start at tope node
-# go left
-# if bottom, collect, else, keep going left
-# go back to parent
-# if top, collect into result, else keep going up (down and right)
-# go right and repeat going to bottom
-
   def sort
     current_node = root
-    # sorted_nodes = []
-    return [current_node.data] if both_links_nil?(current_node)
-    return sort_nodes(current_node)
+    if both_links_nil?(current_node)
+      [current_node.data]
+    else
+      sort_nodes(current_node)
+    end
   end
 
   def sort_nodes(node, sorted_nodes=[])
     if both_links_not_nil?(node)
-      if left_link_not_nil?(node)
-        sorted_nodes = sort_nodes(node.left_link, sorted_nodes)
-        sorted_nodes << node.data
-      end
-      if right_link_not_nil?(node)
-        sorted_nodes = sort_nodes(node.right_link, sorted_nodes)
-      end
+      sort_left_tree(node, sorted_nodes)
+      sorted_nodes << node.data
+      sort_right_tree(node, sorted_nodes)
     else
       sorted_nodes << node.data
     end
     sorted_nodes
+  end
+
+  def sort_left_tree(node, sorted_nodes)
+    if left_link_not_nil?(node)
+      sorted_nodes = sort_nodes(node.left_link, sorted_nodes)
+    end
+    sorted_nodes
+  end
+
+  def sort_right_tree(node, sorted_nodes)
+    if right_link_not_nil?(node)
+      sorted_nodes = sort_nodes(node.right_link, sorted_nodes)
+    end
   end
 
   def set_nodes_links_to_nil(current_node)
