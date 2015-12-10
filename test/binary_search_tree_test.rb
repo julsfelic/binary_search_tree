@@ -190,7 +190,6 @@ class BinarySearchTreeTest < Minitest::Test
   end
 
   def test_returns_an_array_of_all_elements_in_sorted_order
-    skip
     @tree.insert('m')
     @tree.insert('c')
     @tree.insert('q')

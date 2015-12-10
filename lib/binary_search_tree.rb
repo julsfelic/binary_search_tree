@@ -111,32 +111,22 @@ class BinarySearchTree
 
   def sort
     current_node = root
-    sorted_nodes = []
-
-    if both_links_nil?(current_node)
-      sorted_nodes << current_node.data
-    elsif left_link_not_nil?(current_node)
-      min_node = find_min_node
-      sorted_nodes << deconstruct_left_tree(current_node, min_node)
-    end
-    sorted_nodes.flatten
+    # sorted_nodes = []
+    return [current_node.data] if both_links_nil?(current_node)
+    return sort_nodes(current_node)
   end
 
-  def deconstruct_right_tree(current_node)
-    sorted_nodes = []
-    sorted_nodes << current_node.right_link
-    set_right_link_to_nil(current_node)
-    sorted_nodes.flatten
-  end
-
-  def deconstruct_left_tree(current_node, min_node)
-    sorted_nodes = []
-    sorted_nodes << min_node.data
-    sorted_nodes << current_node.data
-    set_left_link_to_nil(current_node)
-    if right_link_not_nil?(current_node)
-      sorted_nodes << current_node.right_link.data
-      set_right_link_to_nil(current_node)
+  def sort_nodes(node, sorted_nodes=[])
+    if both_links_not_nil?(node)
+      if left_link_not_nil?(node)
+        sorted_nodes = sort_nodes(node.left_link, sorted_nodes)
+        sorted_nodes << node.data
+      end
+      if right_link_not_nil?(node)
+        sorted_nodes = sort_nodes(node.right_link, sorted_nodes)
+      end
+    else
+      sorted_nodes << node.data
     end
     sorted_nodes
   end
