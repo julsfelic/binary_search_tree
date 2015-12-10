@@ -218,3 +218,26 @@ class BinarySearchTree
     end
   end
 end
+
+if __FILE__ == $0
+  tree = BinarySearchTree.new
+
+  puts tree.insert('m')
+  puts tree.insert('c')
+  puts tree.insert('q')
+  puts tree.insert('a')
+
+
+  puts tree.include?('q')
+  puts tree.include?('b')
+
+  puts tree.depth_of('q')
+  puts tree.depth_of('a')
+
+  puts tree.max
+  puts tree.min
+
+  p tree.sort
+
+  puts tree.load('./numbers.txt')
+end
