@@ -1,7 +1,6 @@
 require 'minitest'
 require 'binary_search_tree'
 require 'node'
-require 'pry'
 
 class BinarySearchTreeTest < Minitest::Test
   def setup
@@ -16,6 +15,12 @@ class BinarySearchTreeTest < Minitest::Test
 
   def test_has_a_root_equal_to_nil_on_creation
     assert_nil @tree.root
+  end
+
+  def test_can_set_root_on_initialize
+    tree = BinarySearchTree.new(@node1)
+
+    assert_equal @node1, tree.root
   end
 
   def test_root_can_be_assigned_a_node
