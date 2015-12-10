@@ -9,7 +9,6 @@ class BinarySearchTree
   end
 
   def insert(data)
-    # set depth method?
     depth = 0
     node = create_new_node(data)
     if root_is_nil?
@@ -78,6 +77,16 @@ class BinarySearchTree
     until right_link_nil?(current_node)
       current_node = current_node.right_link
       if right_link_nil?(current_node)
+        return current_node.data
+      end
+    end
+  end
+
+  def min
+    current_node = root
+    until left_link_nil?(current_node)
+      current_node = current_node.left_link
+      if left_link_nil?(current_node)
         return current_node.data
       end
     end

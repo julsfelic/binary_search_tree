@@ -158,4 +158,13 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 'q', @tree.max
   end
+
+  def test_returns_the_smallest_value_present_in_a_tree
+    @tree.insert('m')
+    @tree.insert('c')
+    @tree.insert('q')
+    @tree.insert('a')
+
+    assert_equal 'a', @tree.min
+  end
 end
