@@ -32,6 +32,7 @@ class BinarySearchTree
   end
 
   def compare_node_data(depth, node, current_node=root)
+    return if include?(node.data)
     if node.data < current_node.data
       depth += 1
       go_to_left_link(depth, node, current_node)
@@ -133,6 +134,17 @@ class BinarySearchTree
     if right_link_not_nil?(node)
       sorted_nodes = sort_nodes(node.right_link, sorted_nodes)
     end
+  end
+
+  def load(file)
+    numbers = File.foreach(file).map do |line|
+      line.chomp
+    end
+    shuffled_numbers = numbers.uniq.shuffle
+    shuffled_numbers.each do |num|
+      insert(num)
+    end
+    shuffled_numbers.count
   end
 
   def set_nodes_links_to_nil(current_node)

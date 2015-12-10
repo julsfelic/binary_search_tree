@@ -200,6 +200,7 @@ class BinarySearchTreeTest < Minitest::Test
 
   def test_returns_an_array_of_many_elements_in_sorted_order
     @tree.insert('m')
+    @tree.insert('m')
     @tree.insert('c')
     @tree.insert('q')
     @tree.insert('a')
@@ -207,5 +208,11 @@ class BinarySearchTreeTest < Minitest::Test
     @tree.insert('e')
 
     assert_equal ['a', 'c', 'e', 'm', 'q', 'z'], @tree.sort
+  end
+
+  def test_load_returns_the_number_of_unique_values_inserted_into_tree
+    unique_values = @tree.load('numbers.txt')
+
+    assert_equal 10, unique_values
   end
 end
