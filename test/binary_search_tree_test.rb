@@ -215,4 +215,14 @@ class BinarySearchTreeTest < Minitest::Test
 
     assert_equal 10, unique_values
   end
+
+  def test_returns_proper_depth_for_data
+    @tree.insert('m')
+    @tree.insert('c')
+    @tree.insert('q')
+    @tree.insert('a')
+
+    assert_equal 1, @tree.depth_of('q')
+    assert_equal 2, @tree.depth_of('a')
+  end
 end
