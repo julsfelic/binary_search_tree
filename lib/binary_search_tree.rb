@@ -116,19 +116,23 @@ class BinarySearchTree
     if both_links_nil?(current_node)
       sorted_nodes << current_node.data
     elsif left_link_not_nil?(current_node)
-      # find the min node
       min_node = find_min_node
       sorted_nodes << deconstruct_left_tree(current_node, min_node)
-      sorted_nodes << current_node.data
-    elsif false
-      #
     end
+    sorted_nodes.flatten
+  end
+
+  def deconstruct_right_tree(current_node)
+    sorted_nodes = []
+    sorted_nodes << current_node.right_link
+    set_right_link_to_nil(current_node)
     sorted_nodes.flatten
   end
 
   def deconstruct_left_tree(current_node, min_node)
     sorted_nodes = []
     sorted_nodes << min_node.data
+    sorted_nodes << current_node.data
     set_left_link_to_nil(current_node)
     if right_link_not_nil?(current_node)
       sorted_nodes << current_node.right_link.data

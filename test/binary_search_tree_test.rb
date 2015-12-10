@@ -181,6 +181,14 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal ['c', 'm'], @tree.sort
   end
 
+  def test_returns_an_array_with_three_elements_sorted
+    @tree.insert('m')
+    @tree.insert('c')
+    @tree.insert('q')
+
+    assert_equal ['c', 'm', 'q'], @tree.sort
+  end
+
   def test_returns_an_array_of_all_elements_in_sorted_order
     skip
     @tree.insert('m')
